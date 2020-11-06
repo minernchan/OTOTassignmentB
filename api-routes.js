@@ -9,18 +9,18 @@ router.get('/', function (req, res) {
     });
 });
 
-// Import contact controller
-var contactController = require('./contactController');
+// Import message controller
+var messageController = require('./messageController');
 
-// Contact routes
+// Message routes
 router.route('/messages')
-    .get(contactController.index)
-    .post(contactController.new);
+    .get(messageController.index)
+    .post(messageController.new);
 router.route('/messages/:message_id')
-    .get(contactController.view)
-    .patch(contactController.update)
-    .put(contactController.update)
-    .delete(contactController.delete);
+    .get(messageController.view)
+    .patch(messageController.update)
+    .put(messageController.update)
+    .delete(messageController.delete);
 
 // Export API routes
 module.exports = router;
