@@ -13,10 +13,10 @@ router.get('/', function (req, res) {
 var contactController = require('./contactController');
 
 // Contact routes
-router.route('/contacts')
+router.route('/messages')
     .get(contactController.index)
     .post(contactController.new);
-router.route('/contacts/:contact_id')
+router.route('/messages/:message_id')
     .get(contactController.view)
     .patch(contactController.update)
     .put(contactController.update)

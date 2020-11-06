@@ -7,8 +7,6 @@ let mongoose = require('mongoose');
 // Initialise the app
 let app = express();
 
-// require('dotenv').config()
-
 // Import routes
 let apiRoutes = require("./api-routes");
 // Configure bodyparser to handle post requests
@@ -30,7 +28,7 @@ else
 var port = process.env.PORT || 8080;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express'));
+app.get('/', (req, res) => res.send('Prepare your message of encouragement and go to /api/messages'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes);

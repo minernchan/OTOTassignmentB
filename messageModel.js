@@ -1,7 +1,7 @@
-// contactModel.js
+// messageModel.js
 var mongoose = require('mongoose');
 // Setup schema
-var contactSchema = mongoose.Schema({
+var messageSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -10,15 +10,16 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    gender: String,
-    phone: String,
+    sendee: String,
+    sendee_email: String,
+    content: String,
     create_date: {
         type: Date,
         default: Date.now
     }
 });
-// Export Contact model
-var Contact = module.exports = mongoose.model('contact', contactSchema);
+// Export Message model
+var Message = module.exports = mongoose.model('message', messageSchema);
 module.exports.get = function (callback, limit) {
-    Contact.find(callback).limit(limit);
+    Message.find(callback).limit(limit);
 }
