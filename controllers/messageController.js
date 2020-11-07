@@ -1,6 +1,6 @@
 // messageController.js
 // Import message model
-Message = require('./messageModel');
+Message = require('../models/messageModel');
 // Handle index actions
 exports.index = function (req, res) {
     Message.get(function (err, messages) {

@@ -5,12 +5,12 @@ let router = require('express').Router();
 router.get('/', function (req, res) {
     res.json({
         status: 'API Its Working',
-        message: 'Welcome to RESTHub crafted with love!'
+        message: 'Welcome to messagebox'
     });
 });
 
 // Import message controller
-var messageController = require('./messageController');
+var messageController = require('../controllers/messageController');
 
 // Message routes
 router.route('/messages')
