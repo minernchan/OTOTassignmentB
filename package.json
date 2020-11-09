@@ -4,7 +4,7 @@
   "description": "An app demonstrating simple Restful API implementation",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register --timeout 6000 tests/*.js --exit",
+    "test": "mocha --require babel-register tests/*.js --exit",
     "start": "node index.js"
   },
   "keywords": [
