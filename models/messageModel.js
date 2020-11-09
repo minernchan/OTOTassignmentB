@@ -10,9 +10,18 @@ var messageSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    sendee: String,
-    sendee_email: String,
-    content: String,
+    sendee: {
+        type: String,
+        required: true
+    },
+    sendee_email: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
     create_date: {
         type: Date,
         default: Date.now
