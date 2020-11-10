@@ -58,7 +58,7 @@ describe("Messages", () => {
         //         name: "Son Heung Min",
         //         email: "sonaldo@spurs.com",
         //         sendee: "Harry Kane",
-        //         content: "GOod through ball"
+        //         content: "Good through ball"
         //     }
         //     chai.request(app)
         //         .post("/api/messages")
