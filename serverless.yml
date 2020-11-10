@@ -68,9 +68,9 @@ frameworkVersion: '2'
 #    - exclude-me.js
 #    - exclude-me-dir/**
 
-functions:
-  hello:
-    app: app.hello
+# functions:
+#   hello:
+#     app: app.hello
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
