@@ -1,2 +1,7 @@
 node_modules
 partB2demo/
+
+jspm_packages
+
+# Serverless directories
+.serverless
