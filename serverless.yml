@@ -22,8 +22,6 @@ provider:
 functions:
   run:
     app: app
-service: messagebox
-
 
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
