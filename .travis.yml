@@ -3,32 +3,13 @@ node_js:
   - 10.16.3
 services: mongodb
 
-deploy_service_job: &DEPLOY_SERVICE_JOB
-  cache:
-    directories:
-      - node_modules
+cache:
+  - node_modules
 
-install:
-    - npm install -g serverless
-    - travis_retry npm install
-
-
-script:
-    - serverless deploy -s ${STAGE_NAME}
-
-
-environments:
-  - &DEVELOPMENT_ENV
-    - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_DEVELOPMENT}
-    - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_DEVELOPMENT}
-
-jobs:
-  include:
-    # develop branch deploys to the 'dev' stage
-    - <<: *DEPLOY_SERVICE_JOB
-      name: "Deploy MessageBox API"
-      if: type = push AND branch = develop
-      env:
-        # - SERVICE_PATH=""
-        - STAGE_NAME=dev
-        - *DEVELOPMENT_ENV
+deploy:
+  provider: heroku
+  api_key: 
+    secure: "bjHo2w/gMO7roaJIg5+CC7zgYTGd9VW0OfZ+CrJ111IgQ4pghLtXpcryEQouu1fC3GOYF2+gxyLnXXB4yzzYW0NiggvXdamWXj6ofw+yiAGEY0eeyPhtRYALinr0UxqV8DT5cIO0DZ2ZA/YxHJDXLXn2qZ7oFaych7My2wphwpvFh/0ZARTVcMtbohxNUhOZ55nXNGgVxxr7CNqDg1r64jYQUJZiVkpcNkLf0dXSnV9vdhY4pZa0Ursdk5+Xyq6YK6eAoOENr8O7bQFvD+Pn3a/5ueLgjySxiFyW0E2HCnt5GqMIJiI0L6xszgURC/48F5Ps/3QysTS1beIjAHZrWdOYMqlol62/QhVhPlaXxan76zpCQ5Eeu1NcqahzHIlPUIeAmVisuvizjYgP85w4D58f/h5Zyz514syYjLoZTnFZq4G3m9NXD8kzgXkImDqi5wGA6BUCklJ44CZTI8rUcBf7xZGo3z3fF8FBeam5B3PN4G5WBYyZxoO1A1zFbsASM40bB1pQQK/qoSQrFuZJjPheFA95XfwB+6xycAhirWw8p5JWYRsGYB4k5vG2bGDTyiYRISWlmxVoIEpcPGvvlB/k2APnFDqojN3wmtMHyDiWmDEh5ynbUAnv0/h7zEmFBa4avZLyFUVuJN1cg3OcZC855SwEAp9JMZDU41QEIvY="
+  app: messagebox
+  on:
+    repo: minernchan/OTOTassignmentB
