@@ -3,44 +3,41 @@ node_js:
   - 10.16.3
 services: mongodb
 
-deploy_service_job: &DEPLOY_SERVICE_JOB
-  cache:
-    directories:
-      - node_modules
-      # - ${SERVICE_PATH}/node_modules
+# deploy_service_job: 
+#   # &DEPLOY_SERVICE_JOB
+#   cache:
+#     directories:
+#       - node_modules
 
 install:
     - npm install -g serverless
     - travis_retry npm install
-    # - cd ${SERVICE_PATH}
-    # - travis_retry npm install
-    # - cd -
+
 
 script:
-    # - cd ${SERVICE_PATH}
-    - serverless deploy -s ${STAGE_NAME}
-    # - cd -
+  - serverless deploy -s ${STAGE_NAME}
 
 
 environments:
-  - &DEVELOPMENT_ENV
-    - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_DEVELOPMENT}
-    - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_DEVELOPMENT}
+  # - &DEVELOPMENT_ENV
+  - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_DEVELOPMENT}
+  - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_DEVELOPMENT}
 
-jobs:
-  include:
-    # develop branch deploys to the 'dev' stage
-    - <<: *DEPLOY_SERVICE_JOB
-      name: "Deploy MessageBox API"
-      if: type = push AND branch = develop
-      env:
-        - SERVICE_PATH=""
-        - STAGE_NAME=dev
-        - *DEVELOPMENT_ENV
-    # - <<: *DEPLOY_SERVICE_JOB
-    #   name: "Deploy Test Experiences API"
-    #   if: type = push AND branch = develop
-    #   env:
-    #     - SERVICE_PATH="todo-api"
-    #     - STAGE_NAME=dev
-    #     - *DEVELOPMENT_ENV
+# jobs:
+#   include:
+#     # develop branch deploys to the 'dev' stage
+#     # - <<: *DEPLOY_SERVICE_JOB
+#       name: "Deploy MessageBox API"
+#       # if: type = push AND branch = develop
+#       # env:
+#       #   # - SERVICE_PATH=""
+#       #   - STAGE_NAME=dev
+#       #   - *DEVELOPMENT_ENV
+
+deploy:
+  provider: lambda
+  function_name: "deploy"
+  region: "us-east-1"
+  role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
+  runtime: "nodejs10"
+  handler_name: "handler"
