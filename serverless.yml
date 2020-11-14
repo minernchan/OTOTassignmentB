@@ -21,7 +21,7 @@ provider:
   region: eu-west-1
 functions:
   run:
-    app: app
+    handler: handler.run
 
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
