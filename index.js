@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/resthub', { useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/messagebox', { useNewUrlParser: true});
 var db = mongoose.connection;
 
 // Added check for DB connection
@@ -34,7 +34,7 @@ app.get('/', (req, res) => res.send('Prepare your message of encouragement and g
 app.use('/api', apiRoutes);
 // Launch app to listen to specified port
 app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+    console.log("Running MessageBox on port " + port);
 });
 
 module.exports = app;
