@@ -15,7 +15,8 @@ install:
 
 
 script:
-  - serverless deploy -s ${STAGE_NAME}
+  - serverless deploy 
+  # -s ${STAGE_NAME}
 
 
 environments:
